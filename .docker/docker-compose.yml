@@ -23,8 +23,8 @@ services:
                 TIMEZONE: ${TIMEZONE}
         volumes:
             - ../:/var/www/symfony:cached
-            - symfony_app_var:/var/www/symfony/var
-            - symfony_app_vendor:/var/www/symfony/vendor
+            - ../var:/var/www/symfony/var
+            - ../vendor:/var/www/symfony/vendor
         networks:
             - symfony_app
     nginx:

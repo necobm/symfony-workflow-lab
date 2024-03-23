@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a testing project with the purpose of showcase some practical use cases for using Symfony Workflows Bundle ()
+This is a testing project with the purpose of showcase some practical use cases for using [Symfony Workflow Bundle](https://symfony.com/doc/6.4/workflow.html)
 into our projects.
 
 ## Local Environment
