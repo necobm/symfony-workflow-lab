@@ -1,0 +1,37 @@
+framework:
+    workflows:
+        blog_publishing:
+            type: 'state_machine'
+            audit_trail:
+                enabled: true
+            marking_store:
+                type: 'method'
+                property: 'status'
+            supports:
+                - App\Entity\BlogPost
+            initial_marking: !php/const App\Entity\BlogPost::STATUS_DRAFT
+            places:
+                - !php/const App\Entity\BlogPost::STATUS_DRAFT
+                - !php/const App\Entity\BlogPost::STATUS_REVIEWED
+                - !php/const App\Entity\BlogPost::STATUS_REJECTED
+                - !php/const App\Entity\BlogPost::STATUS_PUBLISHED
+                - !php/const App\Entity\BlogPost::STATUS_ARCHIVED
+            transitions:
+                to_draft:
+                    from: !php/const App\Entity\BlogPost::STATUS_DRAFT
+                    to: !php/const App\Entity\BlogPost::STATUS_DRAFT
+                to_reviewed:
+                    from: !php/const App\Entity\BlogPost::STATUS_DRAFT
+                    to: !php/const App\Entity\BlogPost::STATUS_REVIEWED
+                to_published:
+                    from: !php/const App\Entity\BlogPost::STATUS_REVIEWED
+                    to: !php/const App\Entity\BlogPost::STATUS_PUBLISHED
+                to_rejected:
+                    from: !php/const App\Entity\BlogPost::STATUS_REVIEWED
+                    to: !php/const App\Entity\BlogPost::STATUS_REJECTED
+                archived_from_draft:
+                    from: !php/const App\Entity\BlogPost::STATUS_DRAFT
+                    to: !php/const App\Entity\BlogPost::STATUS_REJECTED
+                archived_from_rejected:
+                    from: !php/const App\Entity\BlogPost::STATUS_REJECTED
+                    to: !php/const App\Entity\BlogPost::STATUS_REJECTED
