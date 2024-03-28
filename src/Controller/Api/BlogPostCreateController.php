@@ -3,6 +3,7 @@
 namespace App\Controller\Api;
 
 use App\UseCase\BlogPostCreateHandler;
+use App\UseCase\Request\AbstractDto;
 use App\UseCase\Request\BlogPostCreateRequest;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,10 +23,10 @@ class BlogPostCreateController
         $blogPostRequest = BlogPostCreateRequest::createFromArray($payLoad);
 
         try {
-            $blogPostCreateHandler($blogPostRequest);
+            $blogPostCreateResponse = $blogPostCreateHandler($blogPostRequest);
 
             return new JsonResponse(
-                data: $blogPostRequest->toArray(),
+                data: $blogPostCreateResponse->toArray(),
                 status: Response::HTTP_CREATED
             );
         } catch (\LogicException $exception) {
