@@ -15,7 +15,7 @@ class BlogPostCreateHandler
     ) {
     }
 
-    public function __invoke(AbstractDto $blogPostCreateRequest): BlogPostCreateResponse
+    public function __invoke(AbstractDto $blogPostCreateRequest): Dto\BlogPostDto
     {
         if (!$blogPostCreateRequest instanceof BlogPostCreateRequest) {
             throw new \LogicException('Invalid object type of '.$blogPostCreateRequest::class);

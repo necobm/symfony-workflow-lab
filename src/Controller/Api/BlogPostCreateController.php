@@ -3,7 +3,6 @@
 namespace App\Controller\Api;
 
 use App\UseCase\BlogPostCreateHandler;
-use App\UseCase\Request\AbstractDto;
 use App\UseCase\Request\BlogPostCreateRequest;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

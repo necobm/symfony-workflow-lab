@@ -17,9 +17,6 @@ framework:
                 - !php/const App\Entity\BlogPost::STATUS_PUBLISHED
                 - !php/const App\Entity\BlogPost::STATUS_ARCHIVED
             transitions:
-                to_draft:
-                    from: !php/const App\Entity\BlogPost::STATUS_DRAFT
-                    to: !php/const App\Entity\BlogPost::STATUS_DRAFT
                 to_reviewed:
                     from: !php/const App\Entity\BlogPost::STATUS_DRAFT
                     to: !php/const App\Entity\BlogPost::STATUS_REVIEWED
@@ -29,9 +26,9 @@ framework:
                 to_rejected:
                     from: !php/const App\Entity\BlogPost::STATUS_REVIEWED
                     to: !php/const App\Entity\BlogPost::STATUS_REJECTED
-                archived_from_draft:
-                    from: !php/const App\Entity\BlogPost::STATUS_DRAFT
-                    to: !php/const App\Entity\BlogPost::STATUS_REJECTED
-                archived_from_rejected:
-                    from: !php/const App\Entity\BlogPost::STATUS_REJECTED
-                    to: !php/const App\Entity\BlogPost::STATUS_REJECTED
+                to_archived:
+                    from:
+                        - !php/const App\Entity\BlogPost::STATUS_DRAFT
+                        - !php/const App\Entity\BlogPost::STATUS_REJECTED
+                    to: !php/const App\Entity\BlogPost::STATUS_ARCHIVED
+
