@@ -24,7 +24,6 @@ DATABASE_URL=mysql://app_user:helloworld@db:3306/app_db?serverVersion=8.0.33&cha
 
 4. Go inside folder `./docker` and run `docker compose up -d` to start containers.
 
-5. You should work inside the `php` container. This project is configured to work with [Remote Container](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension for Visual Studio Code, so you could run `Reopen in container` command after open the project.
-
-6. Inside the `php` container, run `composer install` to install dependencies from `/var/www/symfony` folder.
+5. Inside the `php` container, run `composer install` to install dependencies from `/var/www/symfony` folder.
+6. Then, run Doctrine Migrations to populate the database: `php bin/console doctrine:migrations:migrate -n`
 
