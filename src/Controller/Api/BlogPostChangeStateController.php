@@ -11,9 +11,25 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\Routing\Attribute\Route;
+use OpenApi\Annotations as OA;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use App\UseCase\Dto\BlogPostDto;
 
 #[AsController]
 #[Route(path: '/api/blog-post/{blogPostId}/change-state', name: 'api_blog_post_change_state', methods: ['PATCH'])]
+/**
+ * @OA\RequestBody(@Model(type=BlogPostChangeStateRequest::class))
+ *
+ * @OA\Response(
+ *     response="200",
+ *
+ *     description="Success response for BlogPost state changed",
+ *
+ *     @Model(type=BlogPostDto::class)
+ * )
+ *
+ * @OA\Tag(name="BlogPost")
+ */
 class BlogPostChangeStateController
 {
     public function __invoke(

@@ -135,11 +135,4 @@ class BlogPost
 
         return $this;
     }
-
-    public function getCurrentStatus(): array
-    {
-        return [
-            $this->getStatus() => $this->getStatus(),
-        ];
-    }
 }

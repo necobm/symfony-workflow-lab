@@ -17,16 +17,16 @@ framework:
                 - !php/const App\Entity\BlogPost::STATUS_PUBLISHED
                 - !php/const App\Entity\BlogPost::STATUS_ARCHIVED
             transitions:
-                to_reviewed:
+                reviewed:
                     from: !php/const App\Entity\BlogPost::STATUS_DRAFT
                     to: !php/const App\Entity\BlogPost::STATUS_REVIEWED
-                to_published:
+                published:
                     from: !php/const App\Entity\BlogPost::STATUS_REVIEWED
                     to: !php/const App\Entity\BlogPost::STATUS_PUBLISHED
-                to_rejected:
+                rejected:
                     from: !php/const App\Entity\BlogPost::STATUS_REVIEWED
                     to: !php/const App\Entity\BlogPost::STATUS_REJECTED
-                to_archived:
+                archived:
                     from:
                         - !php/const App\Entity\BlogPost::STATUS_DRAFT
                         - !php/const App\Entity\BlogPost::STATUS_REJECTED
